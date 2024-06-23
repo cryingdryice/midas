@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>login</title>
+    <link rel = "stylesheet" type = "text/css" th:href="@{/loginsheet.css}">
+</head>
+<body>
+    <div class="login-wrapper">
+        <h2>Login</h2>
+        <form method="post" action="서버의url" id="login-form">
+            <input type="text" name="userName" placeholder="Name">
+            <input type="password" name="userPassword" placeholder="Password">
+            <div id="remember-check-wrapper">
+                <label for="remember-check">
+                    <input type="checkbox" id="remember-check">아이디 저장하기
+                </label>
+            </div>
+            <input type="submit" value="Login">
+        </form>
+        <button onclick="goRegister()" class="go-button">Register</button>
+    </div>  
+    <script>
+        function goRegister() {
+            window.location.href = 'file:///C:/Users/82102/Desktop/midas%20%EB%A1%9C%EA%B7%B8%EC%9D%B8/join.html'
+        }
+    </script>
+</body>
+</html>
