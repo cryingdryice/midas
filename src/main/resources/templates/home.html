@@ -103,7 +103,8 @@
     </header>
     <nav>
         <a th:href="@{/}">HOME</a>
-        <a th:href="@{/members/login}">Login</a>
+        <a sec:authorize="isAnonymous()" th:href="@{/members/login}">Login</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/members/logout}">Logout</a>
         <a th:href="@{/members/create}">Register</a>
     </nav>
     <div class="container">
@@ -115,14 +116,17 @@
             <button>Graph</button>
         </div>
         <div class="cards">
-            <div class="card">
-                <h3>Sorting</h3>
-                <p>정렬 관련 기본 개념과 예제들</p>
-                <div class="tags">
-                    <span>#정렬</span>
-                    <span>#Algorithm</span>
+            <a th:href="@{/sorting/list}">
+                <div class="card">
+                    <h3>Sorting</h3>
+                    <p>정렬 관련 기본 개념과 예제들</p>
+                    <div class="tags">
+                        <span>#정렬</span>
+                        <span>#Algorithm</span>
+                    </div>
                 </div>
-            </div>
+            </a>
+
             <div class="card">
                 <h3>Dynamic Programming</h3>
                 <p>동적 프로그래밍 관련 기본 개념과 예제들</p>

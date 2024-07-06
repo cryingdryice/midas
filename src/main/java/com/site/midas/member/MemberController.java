@@ -29,20 +29,10 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @GetMapping("/members/login") // 해당 경로로 접속시 register.html로 연결
-    public String loginMemberForm(MemberForm memberForm) {
+    @GetMapping("/members/login")
+    public String login() {
         return "login";
     }
 
-    @PostMapping("/members/login") // 해당 경로에서 폼이 제출되면 실행
-    public String loginMember(@Valid MemberForm memberForm, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) { // 내용이 비어있으면 오류
-            return "login";
-        }
 
-        // memberFrom에서 얻어온 정보로 member엔티티 생성(db에 저장)
-        memberService.create(memberForm.getUsername(), memberForm.getPassword());
-
-        return "redirect:/";
-    }
 }

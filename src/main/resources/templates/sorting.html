@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .post {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .post:last-child {
+            border-bottom: none;
+        }
+        .post-title {
+            font-size: 1.5em;
+            margin: 0 0 10px;
+        }
+        .post-content {
+            font-size: 1em;
+            margin: 0;
+        }
+        .post-date {
+            color: #999;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>게시글 목록</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th style="width:50%">제목</th>
+            <th>글쓴이</th>
+            <th>작성일시</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sorting : ${sortingList}">
+            <td>
+                <a th:href="@{|/sorting/detail/${sorting.id}|}" th:text="${sorting.subject}"></a>
+            </td>
+            <td><span th:if="${sorting.author != null}" th:text="${sorting.author.username}"></span></td>
+            <td th:text="${#temporals.format(sorting.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/sorting/create}" class="btn btn-primary">질문 등록하기</a>
+
+</div>
+</body>
+</html>
